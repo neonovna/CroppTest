@@ -34,12 +34,12 @@ public class RegisterSteps extends BaseUtil {
     @Then("^click on profile icon$")
     public void click_on_profile_icon() {
         NavBar navbar = new NavBar(base.Driver);
-        navbar.ClickProfile();
+        navbar.clickProfile();
     }
 
     @Then("^click on Register button$")
     public void click_on_Register_button() {
-        loginpage.ClickRegister();
+        loginpage.clickRegister();
 
     }
 

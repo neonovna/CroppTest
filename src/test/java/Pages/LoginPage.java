@@ -60,10 +60,10 @@ public class LoginPage {
     @FindBy(how = How.XPATH, using = "//*[@id='pass-error']")
     public WebElement passError;
 
+    @FindBy(how = How.XPATH, using = "//h1[contains(text(),'You are now logged out')]")
+    public WebElement logoutPage;
+
     //---Actions---
-
-
-
 
     public void enterRegEmail() {
         txtUserName.sendKeys("0temporarymail0@gmail.com");
@@ -81,13 +81,14 @@ public class LoginPage {
         txtPassword.sendKeys("lplplplp");
 
     }
-    public void ClickLogin() {
+    public void clickLogin() {
         btnLogin.click();
     }
 
-    public void ClickRegister() {
+    public void clickRegister() {
         btnRegister.click();
     }
+
 
 
 }
