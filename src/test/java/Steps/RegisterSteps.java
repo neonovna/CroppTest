@@ -9,6 +9,7 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 
 import java.util.concurrent.TimeUnit;
+
 import static org.junit.Assert.assertEquals;
 
 
@@ -28,26 +29,22 @@ public class RegisterSteps extends BaseUtil {
         String actualTitle = base.Driver.getTitle();
         String expectedTitle = "Cropp NEW COLLECTION 2017";
         assertEquals(expectedTitle, actualTitle);
-        //assertTrue(driver.getTitle().contains("Cropp NEW COLLECTION 2017"));
     }
 
     @Then("^click on profile icon$")
     public void click_on_profile_icon() {
-        base.Driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         NavBar navbar = new NavBar(base.Driver);
         navbar.ClickProfile();
     }
 
     @Then("^click on Register button$")
     public void click_on_Register_button() {
-        base.Driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         loginpage.ClickRegister();
 
     }
 
     @Then("^I can see register form$")
     public void i_can_see_register_form() {
-        base.Driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         WebElement registration_modal = base.Driver.findElement(By.xpath("//*[@id='customerRegisterForm']"));
         registration_modal.isDisplayed();
     }

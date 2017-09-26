@@ -16,11 +16,10 @@ public class Hook extends BaseUtil {
 
     @Before
     public void beforeScenario() {
-
         System.out.println("Opening a browser: Firtefox");
         System.setProperty("webdriver.gecko.driver", "C:\\geckodriver\\geckodriver.exe");
         base.Driver = new FirefoxDriver();
-
+        //this.base.Driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
     }
 
     @After
