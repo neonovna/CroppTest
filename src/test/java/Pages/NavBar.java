@@ -23,7 +23,7 @@ public class NavBar {
     @FindBy(how = How.ID, using = "myAccountButton")
     public WebElement btnProfile;
 
-    @FindBy(how = How.CLASS_NAME, using = "logout")
+    @FindBy(how = How.CLASS_NAME, using = "logout-title")
     public WebElement btnLogout;
 
 
@@ -38,12 +38,11 @@ public class NavBar {
         Actions actions = new Actions(driver);
         actions.moveToElement(btnProfile).click().build().perform();
 
-        //       actions.moveToElement(btnProfile).click(btnLogout).build().perform();
-
     }
 
     public void logout() {
-        btnLogout.click();
+        Actions actions = new Actions(driver);
+        actions.moveToElement(btnProfile).moveToElement(btnLogout).click().build().perform();
     }
 
 }
