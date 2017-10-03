@@ -6,3 +6,5 @@ Feature: RegistrationFeature
     And click on Register button
     Then I can see register form
 
+    Scenario:
+
