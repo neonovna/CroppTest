@@ -13,9 +13,11 @@ import static com.sun.xml.internal.ws.encoding.policy.FastInfosetFeatureConfigur
 import static org.openqa.selenium.support.ui.ExpectedConditions.visibilityOf;
 
 public class LoginPage {
+    public WebDriver driver;
 
     public LoginPage(WebDriver driver) {
         PageFactory.initElements(driver, this); //static initelements method of pagefactory class for initializing webe-element
+        this.driver = driver;
     }
 
     //---Inputs---
@@ -87,6 +89,10 @@ public class LoginPage {
 
     public void clickRegister() {
         btnRegister.click();
+    }
+
+    public void openLoginForm(){
+        driver.get("https://www.cropp.com/pl/en/customer/account/login/");
     }
 
 

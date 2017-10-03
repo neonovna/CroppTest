@@ -7,7 +7,6 @@ import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.openqa.selenium.interactions.Actions;
 
 
 import static org.junit.Assert.assertEquals;
@@ -30,7 +29,7 @@ public class LoginSteps extends BaseUtil {
 
     @Given("^I am on Login form$")
     public void iAmOnLoginForm() {
-        base.Driver.get("https://www.cropp.com/pl/en/customer/account/login/");
+        loginpage.openLoginForm();
         assertTrue(base.Driver.getTitle().contains("Login"));
     }
 
