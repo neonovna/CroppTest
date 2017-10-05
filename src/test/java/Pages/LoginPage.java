@@ -75,14 +75,6 @@ public class LoginPage {
         txtPassword.sendKeys("kokoko");
     }
 
-    public void enterUnregEmail(){
-        txtUserName.sendKeys("unregisteredmail@gmail.com");
-    }
-
-    public  void  enterUnregPass(){
-        txtPassword.sendKeys("lplplplp");
-
-    }
     public void clickLogin() {
         btnLogin.click();
     }

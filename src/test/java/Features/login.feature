@@ -14,13 +14,19 @@ Feature: LoginFeature
     When five second pass
     Then I should see the main page
 
-  Scenario: Login with unregistred username and password
-    And I enter unregistered email address and any password
+  Scenario Outline: Login with unregistred username and password
+    And I enter invalid <Username> or <Password>
     And click on login button
     When Modal error is displayed
     Then click on Ok button
     And I should see the login form again
 
+  Examples:
+  |Username |Password|
+  |unregistered@gmail.com| kokokoko|
+  |0temporarymail0@gmail.com| kokololo|
+
+  @ignore
   Scenario: Login with valid username and invalid password
     And I enter registered email address
     And  I enter incorrect password
@@ -28,7 +34,7 @@ Feature: LoginFeature
     When Modal error is displayed
     Then click on Ok button
     And I should see the login form again
-
+  @ignore
   Scenario: Login with blank username and password
     When click on login button
     Then username and password fields are highlighted

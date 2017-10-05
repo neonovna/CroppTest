@@ -3,11 +3,14 @@ import Base.BaseUtil;
 import Pages.LoginPage;
 import Pages.NavBar;
 import Pages.RegisterPage;
+import cucumber.api.DataTable;
+import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+import java.util.List;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
@@ -46,52 +49,53 @@ public class LoginSteps extends BaseUtil {
     }
 
     @Then("^I should see Account page$")
-    public void iShouldSeeAccountPage() throws Throwable {
+    public void iShouldSeeAccountPage() {
         assertTrue(base.Driver.getTitle().contains("Account Information"));
     }
 
-    @And("^I enter unregistered email address and any password$")
-    public void iEnterUnregisteredEmailAdressAndAnyPassword() throws Throwable {
-        loginpage.enterUnregEmail();
-        loginpage.enterUnregPass();
+    @And("^I enter invalid credentials$")
+    public void iEnterUnregisteredEmailAdressAndAnyPassword(DataTable invalidcredentials) {
+        List<List<String>> data = invalidcredentials.raw();
+
+        System.out.println(data.get(1).get(0));
+        System.out.println(data.get(1).get(1));
+        loginpage.txtUserName.sendKeys(data.get(1).get(0));
+        loginpage.txtPassword.sendKeys(data.get(1).get(1));
+
     }
 
     @When("^Modal error is displayed$")
-    public void modalErrorIsDisplayed() throws Throwable {
+    public void modalErrorIsDisplayed() {
         loginpage.errorInvalidLogin.isDisplayed();
     }
 
     @Then("^click on Ok button$")
-    public void clickOnOkButton() throws Throwable {
+    public void clickOnOkButton() {
         loginpage.btnOk.click();
     }
 
     @And("^I should see the login form again$")
-    public void iShouldSeeTheLoginFormAgain() throws Throwable {
+    public void iShouldSeeTheLoginFormAgain() {
         assertTrue(loginpage.btnLogin.isDisplayed());
     }
 
     @Then("^username and password fields are highlighted$")
-    public void usernameAndPasswordFieldsAreHighlighted() throws Throwable {
+    public void usernameAndPasswordFieldsAreHighlighted() {
         assertTrue(loginpage.emailRed.isDisplayed());
         assertTrue(loginpage.passRed.isDisplayed());
     }
 
     @And("^username and password fields contain error message$")
-    public void usernameAndPasswordFieldsContainErrorMessage() throws Throwable {
+    public void usernameAndPasswordFieldsContainErrorMessage() {
         assertTrue(loginpage.emailError.isDisplayed());
         assertTrue(loginpage.passError.isDisplayed());
     }
 
     @And("^I enter registered email address$")
-    public void iEnterRegisteredEmailAddress() throws Throwable {
+    public void iEnterRegisteredEmailAddress() {
         loginpage.enterRegEmail();
     }
 
-    @And("^I enter incorrect password$")
-    public void iEnterIncorrectPassword() throws Throwable {
-       loginpage.enterUnregPass();
-    }
 
     @When("^hover over profile icon$")
     public void hoverOverProfileIcon() throws Throwable {
@@ -120,4 +124,13 @@ public class LoginSteps extends BaseUtil {
         String expectedTitle = "Cropp NEW COLLECTION 2017";
         assertEquals(expectedTitle, actualTitle);
     }
+
+    @And("^I enter invalid (.*) or (.*)$")
+    public void iEnterInvalidUsernameOrPassword(String name, String pass) {
+        loginpage.txtUserName.sendKeys(name);
+        loginpage.txtPassword.sendKeys(pass);
+
+
+    }
 }
+
