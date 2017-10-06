@@ -15,7 +15,6 @@ public class RegisterPage  {
     }
 
 
-
     @FindBy(how = How.ID, using = "firstname")
     public WebElement txtFirstname;
 
@@ -31,10 +30,10 @@ public class RegisterPage  {
     @FindBy(how = How.CLASS_NAME, using = "phone-number-prefix")
     public  WebElement txtTelPrefix;
 
-    @FindBy(how = How.XPATH, using = "//input[@value='431']")
+    @FindBy(how = How.XPATH, using = "//*[@id='customerRegisterForm']/div[1]/div[2]/label[1]/div")
     public WebElement radioBtnFemale;
 
-    @FindBy(how = How.XPATH, using = "//input[@value='429']")
+    @FindBy(how = How.XPATH, using = "//*[@id='customerRegisterForm']/div[1]/div[2]/label[2]/div")
     public WebElement radioBtnMale;
 
     @FindBy(how = How.ID, using = "password")
@@ -43,8 +42,11 @@ public class RegisterPage  {
     @FindBy(how = How.ID, using = "confirmation")
     public WebElement txtConfirmPass;
 
-    @FindBy(how = How.XPATH, using = "//a[contains(text(),'terms of use')]/following-sibling::div[@class='control-indicator']")
+    @FindBy(how = How.XPATH, using = "//*[@id='customerRegisterForm']/div[2]/div[4]/label/div")
     public WebElement checkboxTerms;
+
+    @FindBy(how = How.XPATH, using = "//span[contains(text(),'Thank you for registering with Cropp PL Store.')]")
+    public WebElement thanksPopup;
 
 
     //---Buttons---
@@ -70,5 +72,9 @@ public class RegisterPage  {
 
     public void acceptTerms(){
         checkboxTerms.click();
+    }
+
+    public void clickRegisterBtn(){
+        btnRegister.click();
     }
 }

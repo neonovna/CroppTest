@@ -1,24 +1,23 @@
 Feature: RegistrationFeature
 
-#  Scenario: Open register form
-#    Given I am on main page
-#    Then click on profile icon
-#    And click on Register button
-#    Then I can see register form
-
-    Background:
+  Background:
     Given I am on Registration form
 
-    Scenario: Register new user with valid data
-        Then Select Gender
-        And Enter valid First Name
-        And Enter valid Last Name
-        And Enter valid Email
-        And Enter  valid phone number
-        And Enter valid password
-        And Enter password confirmation
-        And Accept Terms
-        And click on Register button
+  Scenario: Register new user with valid data
+    When I enter valid data
+      | FirstName   | TestFirstName |
+      | LastName    | TestLastName  |
+      | Email       | test@test1.com |
+      | Telephone   | 222222222     |
+      | Password    | testtest      |
+      | PassConfirm | testtest      |
+    And Select Gender
+    And Accept Terms
+    And Click on Register button
+    Then Thanks Popup is displayed
+    When click on Ok button
+    Then I should see Account page
+
 
 
 
