@@ -67,14 +67,6 @@ public class LoginPage {
 
     //---Actions---
 
-    public void enterRegEmail() {
-        txtUserName.sendKeys("0temporarymail0@gmail.com");
-    }
-
-    public void enterRegPassword() {
-        txtPassword.sendKeys("kokoko");
-    }
-
     public void clickLogin() {
         btnLogin.click();
     }

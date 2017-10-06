@@ -1,11 +1,11 @@
 Feature: LoginFeature
 
   Background:
-  Given I am on Login form
+    Given I am on Login form
 
-  @ignore
   Scenario: Login with valid username and password
-    And I enter registered email and password
+    And I enter registered credentials
+      | 0temporarymail0@gmail.com | kokoko |
     And click on login button
     Then I should see Account page
     When hover over profile icon
@@ -14,30 +14,26 @@ Feature: LoginFeature
     When five second pass
     Then I should see the main page
 
-  Scenario Outline: Login with unregistred username and password
+
+  Scenario Outline: Login with invalid username and password
     And I enter invalid <Username> or <Password>
     And click on login button
     When Modal error is displayed
     Then click on Ok button
     And I should see the login form again
+    Examples:
+      | Username                  | Password |
+      | unregistered@gmail.com    | kokokoko |
+      | 0temporarymail0@gmail.com | kokololo |
+      | 0temporarymai@gmail.com   | kokoko   |
 
-  Examples:
-  |Username |Password|
-  |unregistered@gmail.com| kokokoko|
-  |0temporarymail0@gmail.com| kokololo|
 
-  @ignore
-  Scenario: Login with valid username and invalid password
-    And I enter registered email address
-    And  I enter incorrect password
-    And click on login button
-    When Modal error is displayed
-    Then click on Ok button
-    And I should see the login form again
   @ignore
   Scenario: Login with blank username and password
     When click on login button
     Then username and password fields are highlighted
     And username and password fields contain error message
+
+
 
 

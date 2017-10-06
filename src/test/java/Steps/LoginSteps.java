@@ -1,14 +1,15 @@
 package Steps;
+
 import Base.BaseUtil;
 import Pages.LoginPage;
 import Pages.NavBar;
 import Pages.RegisterPage;
 import cucumber.api.DataTable;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+
 
 import java.util.List;
 
@@ -19,9 +20,9 @@ import static org.junit.Assert.assertTrue;
 public class LoginSteps extends BaseUtil {
 
     private BaseUtil base;
-    public LoginPage loginpage;
-    public NavBar navbar;
-    public RegisterPage registerpage;
+    private LoginPage loginpage;
+    private NavBar navbar;
+    private RegisterPage registerpage;
 
     public LoginSteps(BaseUtil base) {
         this.base = base;
@@ -36,32 +37,14 @@ public class LoginSteps extends BaseUtil {
         assertTrue(base.Driver.getTitle().contains("Login"));
     }
 
-    @And("^I enter registered email and password$")
-    public void iEnterRegisteredEmailAndPassword() {
-        loginpage.enterRegEmail();
-        loginpage.enterRegPassword();
-    }
-
     @And("^click on login button$")
     public void clickOnLoginButton() {
         loginpage.clickLogin();
-
     }
 
     @Then("^I should see Account page$")
     public void iShouldSeeAccountPage() {
         assertTrue(base.Driver.getTitle().contains("Account Information"));
-    }
-
-    @And("^I enter invalid credentials$")
-    public void iEnterUnregisteredEmailAdressAndAnyPassword(DataTable invalidcredentials) {
-        List<List<String>> data = invalidcredentials.raw();
-
-        System.out.println(data.get(1).get(0));
-        System.out.println(data.get(1).get(1));
-        loginpage.txtUserName.sendKeys(data.get(1).get(0));
-        loginpage.txtPassword.sendKeys(data.get(1).get(1));
-
     }
 
     @When("^Modal error is displayed$")
@@ -91,11 +74,18 @@ public class LoginSteps extends BaseUtil {
         assertTrue(loginpage.passError.isDisplayed());
     }
 
-    @And("^I enter registered email address$")
-    public void iEnterRegisteredEmailAddress() {
-        loginpage.enterRegEmail();
+    @And("^I enter registered credentials$")
+    public void iEnterRegisteredCredentials(DataTable credentials) {
+        List<List<String>> data = credentials.raw();
+        loginpage.txtUserName.sendKeys(data.get(0).get(0));
+        loginpage.txtPassword.sendKeys(data.get(0).get(1));
     }
 
+    @And("^I enter invalid (.*) or (.*)$")
+    public void iEnterInvalidUsernameOrPassword(String name, String pass) {
+        loginpage.txtUserName.sendKeys(name);
+        loginpage.txtPassword.sendKeys(pass);
+    }
 
     @When("^hover over profile icon$")
     public void hoverOverProfileIcon() throws Throwable {
@@ -117,7 +107,6 @@ public class LoginSteps extends BaseUtil {
         Thread.sleep(5000);
     }
 
-
     @Then("^I should see the main page$")
     public void iShouldSeeTheMainPage() throws Throwable {
         String actualTitle = base.Driver.getTitle();
@@ -125,12 +114,5 @@ public class LoginSteps extends BaseUtil {
         assertEquals(expectedTitle, actualTitle);
     }
 
-    @And("^I enter invalid (.*) or (.*)$")
-    public void iEnterInvalidUsernameOrPassword(String name, String pass) {
-        loginpage.txtUserName.sendKeys(name);
-        loginpage.txtPassword.sendKeys(pass);
-
-
-    }
 }
 

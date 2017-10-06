@@ -23,7 +23,7 @@ public class Hook extends BaseUtil {
     @Before
     public void beforeScenario() {
         System.out.println("Opening a browser");
-        //System.setProperty("webdriver.chrome.driver", "C:\\chromedriver\\chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "C:\\chromedriver\\chromedriver.exe");
         base.Driver = new ChromeDriver();
         base.Driver.manage().window().maximize();
         //System.setProperty("webdriver.gecko.driver", "C:\\geckodriver\\geckodriver.exe");
