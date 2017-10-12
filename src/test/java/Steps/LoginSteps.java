@@ -5,7 +5,6 @@ import Pages.LoginPage;
 import Pages.NavBar;
 import Pages.RegisterPage;
 import cucumber.api.DataTable;
-import cucumber.api.PendingException;
 import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -116,4 +115,5 @@ public class LoginSteps extends BaseUtil {
     }
 
 }
+
 

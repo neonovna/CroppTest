@@ -30,10 +30,10 @@ public class RegisterPage  {
     @FindBy(how = How.CLASS_NAME, using = "phone-number-prefix")
     public  WebElement txtTelPrefix;
 
-    @FindBy(how = How.XPATH, using = "//*[@id='customerRegisterForm']/div[1]/div[2]/label[1]/div")
+    @FindBy(how = How.XPATH, using = "//label[text()[contains(.,'Female')]]//div[@class='control-indicator']")
     public WebElement radioBtnFemale;
 
-    @FindBy(how = How.XPATH, using = "//*[@id='customerRegisterForm']/div[1]/div[2]/label[2]/div")
+    @FindBy(how = How.XPATH, using = "//label[text()[contains(.,'Male')]]//div[@class='control-indicator']")
     public WebElement radioBtnMale;
 
     @FindBy(how = How.ID, using = "password")
@@ -42,7 +42,7 @@ public class RegisterPage  {
     @FindBy(how = How.ID, using = "confirmation")
     public WebElement txtConfirmPass;
 
-    @FindBy(how = How.XPATH, using = "//*[@id='customerRegisterForm']/div[2]/div[4]/label/div")
+    @FindBy(how = How.XPATH, using = "//label[text()[contains(.,'I agree with')]]//div[@class='control-indicator']")
     public WebElement checkboxTerms;
 
     @FindBy(how = How.XPATH, using = "//span[contains(text(),'Thank you for registering with Cropp PL Store.')]")
