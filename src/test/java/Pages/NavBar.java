@@ -26,6 +26,9 @@ public class NavBar {
     @FindBy(how = How.CLASS_NAME, using = "logout-title")
     public WebElement btnLogout;
 
+    @FindBy(how = How.ID, using = "showSearchForm")
+    public WebElement btnSearch;
+
 
     //---Actions---
 
@@ -38,6 +41,10 @@ public class NavBar {
         Actions actions = new Actions(driver);
         actions.moveToElement(btnProfile).click().build().perform();
 
+    }
+
+    public void openSearch(){
+        btnSearch.click();
     }
 
     public void logout() {

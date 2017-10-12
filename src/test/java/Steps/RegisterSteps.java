@@ -69,4 +69,5 @@ public class RegisterSteps extends BaseUtil {
     public void thanksPopupIsDisplayed() {
         assertTrue(registerpage.thanksPopup.isDisplayed());
     }
+
 }

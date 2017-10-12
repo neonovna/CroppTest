@@ -3,6 +3,7 @@ Feature: RegistrationFeature
   Background:
     Given I am on Registration form
 
+    @ignore
   Scenario: Register new user with valid data
     When I enter valid data
       | FirstName   | TestFirstName |
@@ -17,6 +18,7 @@ Feature: RegistrationFeature
     Then Thanks Popup is displayed
     When click on Ok button
     Then I should see Account page
+
 
 
 
