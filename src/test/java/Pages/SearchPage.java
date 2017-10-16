@@ -17,4 +17,12 @@ public class SearchPage {
     @FindBy(how = How.XPATH, using = " //input[@name='q']")
     public WebElement inputSearch;
 
+    @FindBy(how = How.XPATH, using = "//button[@type='submit' and @title='Search']")
+    public WebElement btnSubmitSearch;
+
+
+    public void submitSearch(){
+        btnSubmitSearch.click();
+    }
+
 }

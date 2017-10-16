@@ -26,16 +26,10 @@ public class NavBar {
     @FindBy(how = How.CLASS_NAME, using = "logout-title")
     public WebElement btnLogout;
 
-    @FindBy(how = How.ID, using = "showSearchForm")
+    @FindBy(how = How.XPATH, using = "//li[@class='search']")
     public WebElement btnSearch;
 
-
     //---Actions---
-
-
-    public void clickProfile() {
-        btnProfile.click();
-    }
 
     public void hoverProfile() throws InterruptedException {
         Actions actions = new Actions(driver);
@@ -43,13 +37,15 @@ public class NavBar {
 
     }
 
-    public void openSearch(){
+    public void clickSearch(){
         btnSearch.click();
+
     }
 
     public void logout() {
         Actions actions = new Actions(driver);
         actions.moveToElement(btnProfile).moveToElement(btnLogout).click().build().perform();
     }
+
 
 }

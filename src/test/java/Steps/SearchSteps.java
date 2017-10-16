@@ -2,6 +2,8 @@ package Steps;
 
 import Base.BaseUtil;
 import Pages.*;
+import cucumber.api.PendingException;
+import cucumber.api.java.en.And;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -32,11 +34,30 @@ public class SearchSteps extends BaseUtil {
 
     @When("^I click on Search icon$")
     public void iClickOnSearchIcon() {
-       navbar.openSearch();
+        navbar.clickSearch();
     }
 
     @Then("^Search input is opened$")
     public void searchInputIsOpened() {
         assertTrue(searchpage.inputSearch.isDisplayed());
+    }
+
+
+
+    @And("^I submit search$")
+    public void iSubmitSearch() {
+        searchpage.submitSearch();
+    }
+
+    @And("^enter (.*) in search box$")
+    public void enterValueInSearchBox(String value)  {
+        searchpage.inputSearch.click();
+        searchpage.inputSearch.sendKeys(value);
+    }
+
+    @And("^search result with (.*) is displayed$")
+    public void searchResultWithValueIsDisplayed(String value)  {
+
+
     }
 }
