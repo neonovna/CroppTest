@@ -8,6 +8,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class SearchSteps extends BaseUtil {
@@ -56,5 +57,10 @@ public class SearchSteps extends BaseUtil {
     @Then("^search result is displayed$")
     public void searchResultIsDisplayed()  {
         assertTrue(searchpage.searchResultSection.isDisplayed());
+    }
+
+    @Then("^search returns no results$")
+    public void searchReturnsNoResults() {
+      assertTrue(searchpage.searchNoResults.isDisplayed());
     }
 }

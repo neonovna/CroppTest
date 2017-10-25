@@ -23,6 +23,9 @@ public class SearchPage {
     @FindBy(how = How.XPATH, using = "//a[@class='product-link']")
     public WebElement searchResultSection;
 
+    @FindBy(how = How.XPATH, using = "//h2[contains(text(), 'Your search returns no results.')]")
+    public WebElement searchNoResults;
+
 
     public void submitSearch(){
         btnSubmitSearch.click();

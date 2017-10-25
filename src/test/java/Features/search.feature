@@ -13,10 +13,17 @@ Feature: RegistrationFeature
     And I submit search
     Then search result is displayed
     Examples:
-      | value  |
-      | cap    |
-      | tshirt |
+      | value |
+      | cap   |
 
+  Scenario Outline: Search for specific invalid item
+    When I click on Search icon
+    And enter <invalue> in search box
+    And I submit search
+    Then search returns no results
+    Examples:
+      | invalue |
+      | ggg     |
 
 
 
