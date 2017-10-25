@@ -42,8 +42,6 @@ public class SearchSteps extends BaseUtil {
         assertTrue(searchpage.inputSearch.isDisplayed());
     }
 
-
-
     @And("^I submit search$")
     public void iSubmitSearch() {
         searchpage.submitSearch();
@@ -55,9 +53,8 @@ public class SearchSteps extends BaseUtil {
         searchpage.inputSearch.sendKeys(value);
     }
 
-    @And("^search result with (.*) is displayed$")
-    public void searchResultWithValueIsDisplayed(String value)  {
-
-
+    @Then("^search result is displayed$")
+    public void searchResultIsDisplayed()  {
+        assertTrue(searchpage.searchResultSection.isDisplayed());
     }
 }

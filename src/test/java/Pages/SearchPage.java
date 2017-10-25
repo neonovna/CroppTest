@@ -20,6 +20,9 @@ public class SearchPage {
     @FindBy(how = How.XPATH, using = "//button[@type='submit' and @title='Search']")
     public WebElement btnSubmitSearch;
 
+    @FindBy(how = How.XPATH, using = "//a[@class='product-link']")
+    public WebElement searchResultSection;
+
 
     public void submitSearch(){
         btnSubmitSearch.click();
